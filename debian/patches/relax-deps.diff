@@ -1,0 +1,35 @@
+Index: virtiofsd/Cargo.toml
+===================================================================
+--- virtiofsd.orig/Cargo.toml
++++ virtiofsd/Cargo.toml
+@@ -14,7 +14,7 @@ exclude = [".gitlab-ci.yml"]
+ [dependencies]
+ bitflags = "1.2"
+ capng = "0.2.2"
+-env_logger = "0.10.0"
++env_logger = "0.9"
+ futures = { version = "0.3", features = ["thread-pool"] }
+ libc = "0.2.139"
+ log = "0.4"
+@@ -22,7 +22,7 @@ libseccomp-sys = "0.2"
+ structopt = "0.3"
+ vhost-user-backend = "0.8.0"
+ vhost = "0.6.0"
+-virtio-bindings = { version = "0.1", features = ["virtio-v5_0_0"] }
++virtio-bindings = { version = "0.2", features = ["virtio-v5_0_0"] }
+ vm-memory = { version = "0.10.0", features = ["backend-mmap", "backend-atomic"] }
+ virtio-queue = "0.7.0"
+ vmm-sys-util = "0.11.1"
+Index: virtiofsd/src/main.rs
+===================================================================
+--- virtiofsd.orig/src/main.rs
++++ virtiofsd/src/main.rs
+@@ -24,7 +24,7 @@ use vhost::vhost_user::Error::PartialMes
+ use vhost::vhost_user::{Listener, SlaveFsCacheReq};
+ use vhost_user_backend::Error::HandleRequest;
+ use vhost_user_backend::{VhostUserBackend, VhostUserDaemon, VringMutex, VringState, VringT};
+-use virtio_bindings::bindings::virtio_net::*;
++use virtio_bindings::bindings::virtio_config::*;
+ use virtio_bindings::bindings::virtio_ring::{
+     VIRTIO_RING_F_EVENT_IDX, VIRTIO_RING_F_INDIRECT_DESC,
+ };

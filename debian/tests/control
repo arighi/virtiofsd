@@ -1,0 +1,4 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test virtiofsd 1.6.1 --all-targets --all-features
+Features: test-name=virtme-virtiofsd:@
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable
